@@ -1,4 +1,8 @@
 module.exports = {
+  purge: [
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -12,10 +16,18 @@ module.exports = {
         18: '4.5rem',
         22: '5.625rem',
         28: '7rem',
+        80: '20rem'
+      },
+      inset: {
+        20: '5rem',
+        '-20': '-5rem'
       },
       letterSpacing: {
         tighter: '-.04em',
         'wide': '0.3125rem'
+      },
+      minWidth: {
+        80: '20rem'
       },
       lineHeight: {
         tight: 1.2,
@@ -25,6 +37,7 @@ module.exports = {
         'body': ['HelveticaNeue-Light']
       },
       fontSize: {
+        '2xl': '2rem',
         '5xl': '2.5rem',
         '6xl': '2.75rem',
         '7xl': '4.5rem',

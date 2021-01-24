@@ -14,15 +14,16 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import Form from '../../components/form'
 
-export default function Post({ post, morePosts, preview, details }) {
+export default function Post({ post, morePosts, preview, siteSettings }) {
   const router = useRouter()
+  const { siteName, landingPage: { title, pageBuilder } } = siteSettings[0]
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
   return (
     <Layout preview={preview}>
       <Container>
-        <Header siteName={details.siteName}/>
+        <Header siteName={siteName}/>
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -57,10 +58,10 @@ export default function Post({ post, morePosts, preview, details }) {
 
 export async function getStaticProps({ params, preview = false }) {
   const data = await getPostAndMorePosts(params.slug, preview)
-  const details = await getSiteDetails()
+  const siteSettings = await getSiteDetails()
   return {
     props: {
-      details: details[0],
+      siteSettings,
       preview,
       post: data?.post || null,
       morePosts: data?.morePosts || null,
