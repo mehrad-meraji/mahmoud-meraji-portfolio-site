@@ -9,13 +9,20 @@ module.exports = {
         cyan: '#79FFE1',
       },
       spacing: {
+        18: '4.5rem',
+        22: '5.625rem',
         28: '7rem',
       },
       letterSpacing: {
         tighter: '-.04em',
+        'wide': '0.3125rem'
       },
       lineHeight: {
         tight: 1.2,
+      },
+      fontFamily: {
+        'display': ['Playfair Display'],
+        'body': ['HelveticaNeue-Light']
       },
       fontSize: {
         '5xl': '2.5rem',

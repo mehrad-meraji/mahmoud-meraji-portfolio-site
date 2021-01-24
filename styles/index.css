@@ -8,3 +8,9 @@ article a {
 /* purgecss end ignore */
 @tailwind utilities;
 
+.text-block p {
+    @apply .text-xl .font-body .font-light
+}
+.content-block {
+    max-width: 57.625rem;
+}
