@@ -16,7 +16,8 @@ import Form from '../../components/form'
 
 export default function Post({ post, morePosts, preview, siteSettings }) {
   const router = useRouter()
-  const { siteName, landingPage: { title, pageBuilder } } = siteSettings[0]
+  if (!siteSettings) return (<div>nothing here</div>)
+  const { siteName } = siteSettings[0]
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
