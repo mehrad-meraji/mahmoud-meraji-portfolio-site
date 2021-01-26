@@ -60,7 +60,7 @@ export default function ArtworkBlock(props) {
       'text-6xl': ['imageOnTop'].includes(layout),
       'px-42': extraPadding
     })}>{ title }</h3> : null;
-  year = year ? <time className="text-lg font-body">{ year }</time> : null;
+  year = year ? <time className="text-lg font-body mb-4">{ year }</time> : null;
   medium = medium ? <p className="text-lg font-body mb-4">{ medium }</p> : null;
   dimensions = dimensions ? <p className="text-lg font-body mb-4">{ dimensions }</p> : null;
   totalPrice = totalPrice ? <p className="text-lg font-body">{ price }</p> : null;
