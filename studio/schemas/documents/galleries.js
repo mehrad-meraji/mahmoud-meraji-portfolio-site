@@ -16,8 +16,8 @@ export default {
       type: 'boolean'
     },
     {
-      name: 'pageBuilder',
-      title: 'Page Builder',
+      name: 'content',
+      title: 'Content',
       type: 'array',
       of: [
         {

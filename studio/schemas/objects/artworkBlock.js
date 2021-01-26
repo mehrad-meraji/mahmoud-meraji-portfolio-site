@@ -1,5 +1,6 @@
 import artwork from "../documents/artwork";
 import layout from "./layout";
+import {qF} from "sanity-quick-fields";
 
 export default {
   name: 'artworkBlock',
@@ -13,10 +14,21 @@ export default {
         { type: 'artwork' }
       ]
     },
+    qF('sold', 'boolean'),
+    qF('artworkSize', 'artworkSize'),
     {
-      name: 'layout',
-      type: 'layout'
+      name: 'cta',
+      title: 'Button',
+      type: 'object',
+      fields: [
+        qF('label'),
+        qF('url')
+      ]
     },
+    qF('layout', 'layout'),
+    qF('extraPadding', 'boolean'),
+    qF('fullBleed', 'boolean'),
+    qF('backgroundColor', 'color'),
   ],
   preview: {
     select: {

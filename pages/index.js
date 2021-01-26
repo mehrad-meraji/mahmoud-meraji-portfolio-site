@@ -4,9 +4,16 @@ import {getSiteDetails} from '../lib/api'
 import Head from 'next/head'
 import Header from "../components/header";
 import RenderSections from "../components/render-sections";
+import {useState} from "react";
+import PasswordPage from "./passwordPage";
+import Footer from "../components/footer";
+import "animate.css"
+import TitleCard from "./titleCard";
 
 export default function Index({ siteSettings, preview }) {
-  const { siteName, landingPage: { title, pageBuilder } } = siteSettings[0]
+  const { siteName, landingPage: { title, content, isPasswordProtected } } = siteSettings[0]
+  const [ authenticate, setAuthenticate ] = useState(false);
+  const [ loaded, setLoaded ] = useState(false);
   return (
     <>
       <Layout preview={preview}>
@@ -17,7 +24,14 @@ export default function Index({ siteSettings, preview }) {
         </Head>
         <Container>
           <Header siteName={siteName}/>
-          <RenderSections sections={pageBuilder}/>
+          <div className="flex flex-1">
+            {isPasswordProtected && !authenticate ? <PasswordPage authenticate={setAuthenticate}/> : null}
+            {isPasswordProtected && authenticate ?  <>
+                { !loaded ? <TitleCard loaded={setLoaded}/> : null }
+              </> : null }
+            <RenderSections visible={isPasswordProtected ? authenticate : true} sections={content}/>
+          </div>
+          <Footer />
         </Container>
       </Layout>
     </>

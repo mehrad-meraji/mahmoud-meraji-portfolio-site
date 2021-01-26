@@ -2,22 +2,23 @@ import {qF} from "sanity-quick-fields";
 import InputSelect from "../../components/inputSelect";
 
 export default {
-  name: 'layout',
+  title: 'Artwork Size',
+  name: 'artworkSize',
   type: 'string',
   inputComponent: InputSelect,
   options: {
     options: [
       {
         value: 'none',
-        label: 'No layout selected'
+        label: 'Default'
       },
       {
-        value: 'imageOnLeft',
-        label: 'image on Left'
+        value: 'small',
+        label: 'Small'
       },
       {
-        value: 'imageOnTop',
-        label: 'image on Top'
+        value: 'large',
+        label: 'Large'
       },
     ]
   }

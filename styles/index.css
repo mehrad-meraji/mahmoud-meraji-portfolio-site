@@ -9,7 +9,7 @@ article a {
 @tailwind utilities;
 
 .text-block p {
-    @apply .text-xl .font-body .font-light
+    @apply text-xl font-body font-light leading-normal
 }
 .content-block {
     max-width: 57.625rem;

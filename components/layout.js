@@ -6,10 +6,7 @@ export default function Layout({ preview, children }) {
   return (
     <>
       <Meta />
-      <div className="min-h-screen antialiased">
-        <main>{children}</main>
-      </div>
-      <Footer />
+      <main className="min-h-screen antialiased">{children}</main>
     </>
   )
 }

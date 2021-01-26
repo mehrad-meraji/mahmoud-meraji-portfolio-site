@@ -2,6 +2,7 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {upperFirst} from 'lodash'
 import * as SectionComponents from './sections';
+import cn from "classnames";
 
 function resolveSections (section) {
   // eslint-disable-next-line import/namespace
@@ -16,7 +17,7 @@ function resolveSections (section) {
 }
 
 function RenderSections (props) {
-  const {sections} = props
+  const {sections, visible} = props
   
   if (!sections) {
     console.error('Missing section')
@@ -24,7 +25,9 @@ function RenderSections (props) {
   }
   
   return (
-    <Fragment>
+    <div className={cn({
+      hidden: !visible
+    })}>
       {
         sections.map(section => {
           const SectionComponent = resolveSections(section)
@@ -34,7 +37,7 @@ function RenderSections (props) {
           return <SectionComponent {...section} key={section._key} />
         })
       }
-    </Fragment>
+    </div>
   )
 }
 

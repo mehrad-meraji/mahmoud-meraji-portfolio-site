@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    enabled: true,
+    enabled: false,
     content:[
       './**/*.{js,jsx,ts,tsx}'
     ]
@@ -13,11 +13,18 @@ module.exports = {
         'accent-7': '#333',
         success: '#0070f3',
         cyan: '#79FFE1',
+        gray: {
+          100: '#f7f8fb',
+          200: '#e0e1e6',
+          500: '#888991'
+        }
       },
       spacing: {
+        6: '1.5rem',
         18: '4.5rem',
         22: '5.625rem',
         28: '7rem',
+        42: '10.71rem',
         80: '20rem'
       },
       inset: {
@@ -29,10 +36,14 @@ module.exports = {
         'wide': '0.3125rem'
       },
       minWidth: {
+        52: '12.75rem',
         80: '20rem'
       },
       lineHeight: {
         tight: 1.2,
+      },
+      fontWeight: {
+        'normal': 'normal'
       },
       fontFamily: {
         'display': ['Playfair Display'],
@@ -41,7 +52,7 @@ module.exports = {
       fontSize: {
         '2xl': '2rem',
         '5xl': '2.5rem',
-        '6xl': '2.75rem',
+        '6xl': '3.375rem',
         '7xl': '4.5rem',
         '8xl': '6.25rem',
       },
