@@ -24,8 +24,7 @@ export default function PasswordPage({ authenticate }) {
   }
   const onSubmit = event => {
     setSubmitted(true)
-    if (inputRef.current.value === 'asdf') {
-      console.log('hi')
+    if (inputRef.current.value === 'gallery') {
       setPasswordIsCorrect(true)
     }
     event.preventDefault();
