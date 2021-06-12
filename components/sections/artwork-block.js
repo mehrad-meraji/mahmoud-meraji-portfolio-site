@@ -28,7 +28,7 @@ export default function ArtworkBlock(props) {
     extraPadding,
     sold
   } = props;
-  const price = currencyFormat(totalPrice);
+  const price = totalPrice ? currencyFormat(totalPrice) : null;
   const blockRef = useRef(null);
   let imageUrl;
   let classList = cn(
@@ -92,4 +92,3 @@ export default function ArtworkBlock(props) {
     </section>
   );
 }
-

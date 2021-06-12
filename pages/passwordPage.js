@@ -11,11 +11,13 @@ export default function PasswordPage({ authenticate }) {
     if (passwordIsCorrect) authenticate(true);
   }
   useEffect(() => {
-    if (containerRef && containerRef.current) {
-      containerRef.current.addEventListener('animationend', animationEnded)
-      return () => {
-        containerRef.current.removeEventListener('animationend', animationEnded)
-      }
+    if (!containerRef || !containerRef.current) {
+      return
+    }
+    const current = containerRef.current
+    current.addEventListener('animationend', animationEnded)
+    return () => {
+      current.removeEventListener('animationend', animationEnded)
     }
   })
   const onChanges = () => {
@@ -31,7 +33,8 @@ export default function PasswordPage({ authenticate }) {
   }
   return (
     <div ref={containerRef} className={cn(
-      "flex flex-col items-center justify-center flex-1 w-full border-t border-solid border-gray-200 bg-gray-100", {
+      "flex flex-col items-center justify-center flex-grow h-full w-full border-t border-solid border-gray-200" +
+      " bg-gray-100", {
         "animate__animated animate__fadeOut": passwordIsCorrect
       }
     )}>

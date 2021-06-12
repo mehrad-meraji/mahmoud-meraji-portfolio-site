@@ -4,11 +4,10 @@ function Magnifier({ zoom, src, largeSrc, className }) {
   let w, h, bw;
   const imageRef = useRef(null);
   const glassRef = useRef(null);
-  const [ insideBoundry, setInsideBoundry ] = useState(false);
+  const [ insideBoundary, setInsideBoundary ] = useState(false);
   
   const getCursorPos = (e) => {
-    let a, x = 0, y = 0;
-    e = e || window.event;
+    let a, x, y;
     /* Get the x and y positions of the image: */
     a = imageRef.current.getBoundingClientRect();
     /* Calculate the cursor's x and y coordinates, relative to the image: */
@@ -20,10 +19,9 @@ function Magnifier({ zoom, src, largeSrc, className }) {
     return {x, y};
   }
   const moveMagnifier = (e) => {
-    let pos;
-    const { clientWidth: width, clientHeight: height } = imageRef.current
-    glassRef.current.style.backgroundSize = `${width * zoom}px ${height * zoom}px`
-    glassRef.current.style.backgroundImage = `url(${largeSrc})`,
+    const { clientWidth: width, clientHeight: height } = imageRef.current;
+    glassRef.current.style.backgroundSize = `${width * zoom}px ${height * zoom}px`;
+    glassRef.current.style.backgroundImage = `url(${largeSrc})`;
     
     bw = 3;
     w = glassRef.current.offsetWidth / 2;
@@ -44,27 +42,28 @@ function Magnifier({ zoom, src, largeSrc, className }) {
     glassRef.current.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
   }
   const removeMagnifier = () => {
-    setInsideBoundry(false);
+    setInsideBoundary(false);
   }
   const addMagnifier = () => {
-    setInsideBoundry(true);
+    setInsideBoundary(true);
   }
   useEffect(() => {
-    if (imageRef && imageRef.current) {
-      imageRef.current.addEventListener('mousemove', moveMagnifier)
-      imageRef.current.addEventListener('mouseenter', addMagnifier)
-      imageRef.current.addEventListener('mouseleave', removeMagnifier)
-      return () => {
-        imageRef.current.removeEventListener('mousemove', moveMagnifier)
-        imageRef.current.removeEventListener('mouseenter', addMagnifier)
-        imageRef.current.removeEventListener('mouseleave', removeMagnifier)
-      }
+    if (!imageRef || !imageRef.current) return
+    const currentImage = imageRef.current;
+    currentImage.addEventListener('mousemove', moveMagnifier)
+    currentImage.addEventListener('mouseenter', addMagnifier)
+    currentImage.addEventListener('mouseleave', removeMagnifier)
+    return () => {
+      currentImage.removeEventListener('mousemove', moveMagnifier)
+      currentImage.removeEventListener('mouseenter', addMagnifier)
+      currentImage.removeEventListener('mouseleave', removeMagnifier)
     }
+    
   })
   return (
     <>
       <div ref={imageRef} className={cn("relative", className)}>
-        { insideBoundry ? <div ref={glassRef} style={{
+        { insideBoundary ? <div ref={glassRef} style={{
           cursor: 'none'
         }} className={"bg-no-repeat w-80 h-80 cursor-none absolute rounded-full"} /> : null}
         <img src={src} alt={""}/>

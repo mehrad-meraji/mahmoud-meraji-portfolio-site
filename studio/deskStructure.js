@@ -11,6 +11,14 @@ export default () =>
       ...S.documentTypeListItems()
         .filter(listItem => !['siteSettings', 'social'].includes(listItem.getId())),
       // add a visual divider (optional)
+      S.listItem()
+        .title('Navigation')
+        .child(
+          //displaying out editor window using the siteSettings schema
+          S.editor()
+            .schemaType('siteNavigation')
+            .documentId('siteNavigation')
+        ),
       S.divider(),
       S.listItem()
         .title('Site settings')

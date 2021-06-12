@@ -21,6 +21,9 @@ import textBlock from "./objects/textBlock";
 import layout from "./objects/layout";
 import heroBlock from "./objects/heroBlock";
 import artworkSize from "./objects/artworkSize";
+import menu from './objects/menu';
+import galleryBlock from './objects/galleryBlock';
+import selectedWorksBlock from './objects/selectedWorksBlock';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -32,6 +35,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
+    menu,
     social,
     blockContent,
     artwork,
@@ -41,6 +45,8 @@ export default createSchema({
     textBlock,
     layout,
     heroBlock,
-    artworkSize
+    artworkSize,
+    galleryBlock,
+    selectedWorksBlock
   ])
 })
